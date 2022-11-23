@@ -56,7 +56,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,UserName,UploadDate,CategoryType")] Document document)
+        public async Task<IActionResult> Create([Bind("Id,Category,Name,UserName,UploadDate")] Document document)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserName,UploadDate,CategoryType")] Document document)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Category,Name,UserName,UploadDate")] Document document)
         {
             if (id != document.Id)
             {
