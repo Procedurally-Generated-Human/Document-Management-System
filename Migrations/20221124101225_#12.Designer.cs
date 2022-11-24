@@ -3,6 +3,7 @@ using System;
 using DemoDMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoDMS.Migrations
 {
     [DbContext(typeof(DemoDMSContext))]
-    partial class DemoDMSContextModelSnapshot : ModelSnapshot
+    [Migration("20221124101225_#12")]
+    partial class _12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -30,9 +33,6 @@ namespace DemoDMS.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FilePath")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FileType")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

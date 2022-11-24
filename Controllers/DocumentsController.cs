@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoDMS.Data;
 using DemoDMS.Models;
+using System.Net.Http.Headers;
 
 namespace DemoDMS.Controllers
 {
@@ -45,6 +46,29 @@ namespace DemoDMS.Controllers
             return View(document);
         }
 
+
+        public async Task<IActionResult> Download(int? id){
+   
+            if (id == null || _context.Document == null)
+                {
+                    return NotFound();
+                }
+
+            var document = await _context.Document.FindAsync(id);
+            if (document == null)
+                {
+                    return NotFound();
+                }
+            
+            string filePath = document.FilePath;
+            string fileName = document.Name + document.Extension;
+            string fileType = document.FileType;
+            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(fileBytes, fileType, fileName);
+        }
+        
+
+
         // GET: Documents/Create
         public IActionResult Create()
         {
@@ -56,15 +80,44 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Category,Name,UserName,UploadDate")] Document document)
+        public async Task<IActionResult> Create(List<IFormFile> files, String name, String userName, Category category)
         {
-            if (ModelState.IsValid)
+
+    foreach(var file in files)
+    {
+
+        var basePath = Path.Combine(Directory.GetCurrentDirectory() ,"Documents");
+        bool basePathExists = System.IO.Directory.Exists(basePath);
+        if (!basePathExists) Directory.CreateDirectory(basePath);
+        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+        var filePath = Path.Combine(basePath, file.FileName);
+        var extension = Path.GetExtension(file.FileName);
+
+        Console.WriteLine(file.ContentType);
+        Console.WriteLine(file.Length);
+
+        if (!System.IO.File.Exists(filePath))
+        {
+            using (var stream = new FileStream(filePath, FileMode.Create))
             {
-                _context.Add(document);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                await file.CopyToAsync(stream);
             }
-            return View(document);
+        }
+                    var document = new Document
+            {
+                UploadDate = DateTime.UtcNow,
+                UserName = userName,
+                Name = name,
+                FilePath = filePath,
+                FileType = file.ContentType,
+                Extension = extension,
+                size = file.Length
+            };
+            _context.Document.Add(document);
+            _context.SaveChanges();
+        
+    }
+            return RedirectToAction("Index");
         }
 
         // GET: Documents/Edit/5
@@ -88,7 +141,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Category,Name,UserName,UploadDate")] Document document)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserName,UploadDate,Category,FilePath")] Document document)
         {
             if (id != document.Id)
             {
