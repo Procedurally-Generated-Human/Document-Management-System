@@ -82,7 +82,7 @@ namespace DemoDMS.Controllers
     foreach(var file in files)
     {
 
-        var basePath = Path.Combine(Directory.GetCurrentDirectory() ,"Documents");
+        var basePath = Path.Combine("Documents");
         bool basePathExists = System.IO.Directory.Exists(basePath);
         if (!basePathExists) Directory.CreateDirectory(basePath);
         var fileName = Path.GetFileNameWithoutExtension(file.FileName);
@@ -162,27 +162,33 @@ namespace DemoDMS.Controllers
             if (ModelState.IsValid)
             {
                 bool isEmpty = !files.Any();
-                IFormFile file = files[0];
+                IFormFile file = null;
                 if (!isEmpty){
                     file = files[0];
-                }
-                
-
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() ,"Documents");
-                bool basePathExists = System.IO.Directory.Exists(basePath);
-                if (!basePathExists) Directory.CreateDirectory(basePath);
-                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                var filePath = Path.Combine(basePath, file.FileName);
+            }
 
                 document.Name = name;
                 document.UserName = userName;
                 document.Category = category;
                 if(!isEmpty){
+                    
+                    var basePath = Path.Combine("Documents");
+                    bool basePathExists = System.IO.Directory.Exists(basePath);
+                    if (!basePathExists) Directory.CreateDirectory(basePath);
+                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                    var filePath = Path.Combine(basePath, file.FileName);
+
+                    if (!System.IO.File.Exists(filePath)){
+                        using (var stream = new FileStream(filePath, FileMode.Create)){
+                            await file.CopyToAsync(stream);
+                        }
+                    }
+
                     document.ModifiedDate = DateTime.UtcNow;
                     document.Extension = Path.GetExtension(file.FileName);
                     document.Size = file.Length;
                     document.FileType = file.ContentType;
-                    document.FilePath = fileName;
+                    document.FilePath = filePath;
                 }
                 try
                 {
