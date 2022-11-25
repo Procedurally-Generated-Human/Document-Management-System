@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using DemoDMS.Data;
+using System.Globalization;
 
 CultureInfo.DefaultThreadCurrentCulture
 = CultureInfo.DefaultThreadCurrentUICulture
@@ -8,8 +9,10 @@ CultureInfo.DefaultThreadCurrentCulture
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<DemoDMSContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DemoDMSContext") ?? throw new InvalidOperationException("Connection string 'DemoDMSContext' not found.")));
+builder.Services.AddDbContext<DemoDMSContext>(
+    options => options.UseSqlite(
+        builder.Configuration.GetConnectionString("DemoDMSContext")
+        ?? throw new InvalidOperationException("Connection string 'DemoDMSContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -34,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Documents}/{action=Index}/{id?}");
 
 app.Run();
