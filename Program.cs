@@ -1,7 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using DemoDMS.Data;
+
+CultureInfo.DefaultThreadCurrentCulture
+= CultureInfo.DefaultThreadCurrentUICulture
+= PersianDateExtensionMethods.GetPersianCulture();
+
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<DemoDMSContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DemoDMSContext") ?? throw new InvalidOperationException("Connection string 'DemoDMSContext' not found.")));
 
@@ -19,6 +25,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
