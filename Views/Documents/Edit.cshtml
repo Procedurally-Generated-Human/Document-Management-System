@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form method="post" enctype="multipart/form-data" asp-controller="Documents" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="FilePath" class="control-label"></label>
-                <input asp-for="FilePath" class="form-control" />
+                <input asp-for="FilePath" type="file" name="files" class="form-control" />
                 <span asp-validation-for="FilePath" class="text-danger"></span>
             </div>
             <div class="form-group">

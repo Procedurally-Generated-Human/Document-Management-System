@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoDMS.Data;
 using DemoDMS.Models;
-using System.Net.Http.Headers;
 
 namespace DemoDMS.Controllers
 {
@@ -46,7 +45,6 @@ namespace DemoDMS.Controllers
             return View(document);
         }
 
-
         public async Task<IActionResult> Download(int? id){
    
             if (id == null || _context.Document == null)
@@ -67,8 +65,6 @@ namespace DemoDMS.Controllers
             return File(fileBytes, fileType, fileName);
         }
         
-
-
         // GET: Documents/Create
         public IActionResult Create()
         {
@@ -78,7 +74,7 @@ namespace DemoDMS.Controllers
         // POST: Documents/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+                [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(List<IFormFile> files, String name, String userName, Category category)
         {
@@ -106,12 +102,14 @@ namespace DemoDMS.Controllers
                     var document = new Document
             {
                 UploadDate = DateTime.UtcNow,
+                ModifiedDate = DateTime.UtcNow,
                 UserName = userName,
                 Name = name,
                 FilePath = filePath,
                 FileType = file.ContentType,
                 Extension = extension,
-                size = file.Length
+                Size = file.Length,
+                Category = category
             };
             _context.Document.Add(document);
             _context.SaveChanges();
@@ -119,6 +117,7 @@ namespace DemoDMS.Controllers
     }
             return RedirectToAction("Index");
         }
+
 
         // GET: Documents/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -141,8 +140,20 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserName,UploadDate,Category,FilePath")] Document document)
+        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, Category category)
         {
+            if (id == null || _context.Document == null)
+            {
+                return NotFound();
+            }
+
+            var document = await _context.Document.FindAsync(id);
+
+            if (document == null)
+            {
+                return NotFound();
+            }
+
             if (id != document.Id)
             {
                 return NotFound();
@@ -150,6 +161,29 @@ namespace DemoDMS.Controllers
 
             if (ModelState.IsValid)
             {
+                bool isEmpty = !files.Any();
+                IFormFile file = files[0];
+                if (!isEmpty){
+                    file = files[0];
+                }
+                
+
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() ,"Documents");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var filePath = Path.Combine(basePath, file.FileName);
+
+                document.Name = name;
+                document.UserName = userName;
+                document.Category = category;
+                if(!isEmpty){
+                    document.ModifiedDate = DateTime.UtcNow;
+                    document.Extension = Path.GetExtension(file.FileName);
+                    document.Size = file.Length;
+                    document.FileType = file.ContentType;
+                    document.FilePath = fileName;
+                }
                 try
                 {
                     _context.Update(document);
