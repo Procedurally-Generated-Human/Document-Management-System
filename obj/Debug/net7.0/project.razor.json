@@ -16595,16 +16595,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/parsa/Code/C#/DemoDMS/Views/Home/Upload.cshtml",
-      "TargetPath": "Views\\Home\\Upload.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/parsa/Code/C#/DemoDMS/Views/Home/Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/Users/parsa/Code/C#/DemoDMS/Views/Documents/Create.cshtml",
       "TargetPath": "Views\\Documents\\Create.cshtml",
       "FileKind": "mvc"

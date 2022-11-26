@@ -67,9 +67,10 @@
                 @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit small" style="color:orange"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle"></i></a> 
+                <a asp-action="Download" asp-route-id="@item.Id"><i class="fas fa-download" style="color:green"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash" style="color:red"></i></a>
             </td>
         </tr>
 }
