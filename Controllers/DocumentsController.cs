@@ -20,11 +20,17 @@ namespace DemoDMS.Controllers
         }
 
         // GET: Documents
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Document != null ? 
-                          View(await _context.Document.ToListAsync()) :
-                          Problem("Entity set 'DemoDMSContext.Document'  is null.");
+                var documents = from m in _context.Document
+                select m;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    documents = documents.Where(s => s.Name!.Contains(searchString) || s.UserName!.Contains(searchString));
+                }
+
+            return View(await documents.ToListAsync());
         }
 
         // GET: Documents/Details/5

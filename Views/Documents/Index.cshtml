@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Documents" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
 <table class="table sortable">
     <thead>
         <tr>
