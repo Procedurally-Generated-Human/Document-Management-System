@@ -30,6 +30,8 @@ namespace DemoDMS.Controllers
                     documents = documents.Where(s => s.Name!.Contains(searchString) || s.UserName!.Contains(searchString));
                 }
 
+                ViewData["searchString"] = searchString;
+
             return View(await documents.ToListAsync());
         }
 
