@@ -20,11 +20,11 @@ namespace DemoDMS.Models
 
   
         [DataType(DataType.DateTime)]
-        public DateTime UploadDate { get; set; }
+        public DateTimeOffset UploadDate { get; set; }
         
 
         [DataType(DataType.DateTime)]
-        public DateTime ModifiedDate { get; set; }
+        public DateTimeOffset ModifiedDate { get; set; }
 
         public double? Size { get; set;}
 
@@ -35,5 +35,5 @@ namespace DemoDMS.Models
         
 
     }
-    public enum Category {اداری,مالی, مدیریت, عمومی}
+    public enum Category {اداری, مالی, مدیریت, عمومی}
 }

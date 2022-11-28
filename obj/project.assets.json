@@ -1994,6 +1994,41 @@
           }
         }
       },
+      "OrchardCore.Localization.Abstractions/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/OrchardCore.Localization.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/OrchardCore.Localization.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "OrchardCore.Localization.Core/1.5.0": {
+        "type": "package",
+        "dependencies": {
+          "OrchardCore.Localization.Abstractions": "1.5.0"
+        },
+        "compile": {
+          "lib/net6.0/OrchardCore.Localization.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/OrchardCore.Localization.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -6514,6 +6549,34 @@
         "nuget.versioning.nuspec"
       ]
     },
+    "OrchardCore.Localization.Abstractions/1.5.0": {
+      "sha512": "hiGu3jxdkUQIygPGXUT2RGbol3ZnoQDbUcystyQ6sBIK+qBPkB5ELV7ZIVQYM/hSDMSQ5ho5eYHpUEdpZ5Ff5A==",
+      "type": "package",
+      "path": "orchardcore.localization.abstractions/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/OrchardCore.Localization.Abstractions.dll",
+        "lib/net6.0/OrchardCore.Localization.Abstractions.xml",
+        "orchardcore.localization.abstractions.1.5.0.nupkg.sha512",
+        "orchardcore.localization.abstractions.nuspec"
+      ]
+    },
+    "OrchardCore.Localization.Core/1.5.0": {
+      "sha512": "5sq4CgZ29do7/CN7UL6k4o7+nfI4i+kqPe5BI9xrjQwO5CGUyETDyom//6ixTuTaPQ+VRrsCDlnmHLe9Wv+gWw==",
+      "type": "package",
+      "path": "orchardcore.localization.core/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/OrchardCore.Localization.Core.dll",
+        "lib/net6.0/OrchardCore.Localization.Core.xml",
+        "orchardcore.localization.core.1.5.0.nupkg.sha512",
+        "orchardcore.localization.core.nuspec"
+      ]
+    },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "sha512": "HdSSp5MnJSsg08KMfZThpuLPJpPwE5hBXvHwoKWosyHHfe8Mh5WKT0ylEOf6yNzX6Ngjxe4Whkafh5q7Ymac4Q==",
       "type": "package",
@@ -10778,23 +10841,24 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0",
       "Microsoft.EntityFrameworkCore.SQLite >= 7.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.0",
+      "OrchardCore.Localization.Core >= 1.5.0"
     ]
   },
   "packageFolders": {
-    "/Users/parsa/.nuget/packages/": {}
+    "C:\\Users\\laptop\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/parsa/Code/C#/DemoDMS/DemoDMS.csproj",
+      "projectUniqueName": "C:\\Users\\laptop\\Downloads\\Programming\\ASPDOTNET\\DMS-demo\\DemoDMS.csproj",
       "projectName": "DemoDMS",
-      "projectPath": "/Users/parsa/Code/C#/DemoDMS/DemoDMS.csproj",
-      "packagesPath": "/Users/parsa/.nuget/packages/",
-      "outputPath": "/Users/parsa/Code/C#/DemoDMS/obj/",
+      "projectPath": "C:\\Users\\laptop\\Downloads\\Programming\\ASPDOTNET\\DMS-demo\\DemoDMS.csproj",
+      "packagesPath": "C:\\Users\\laptop\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\laptop\\Downloads\\Programming\\ASPDOTNET\\DMS-demo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/parsa/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -10835,6 +10899,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "OrchardCore.Localization.Core": {
+            "target": "Package",
+            "version": "[1.5.0, )"
           }
         },
         "imports": [
@@ -10856,7 +10924,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

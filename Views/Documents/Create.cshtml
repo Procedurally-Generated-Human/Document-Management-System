@@ -1,46 +1,47 @@
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
 @model DemoDMS.Models.Document
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = Localizer["Create"];
 }
 
-<h1>Create</h1>
+<h1>@Localizer["Create"]</h1>
 
-<h4>Document</h4>
+<h4>@Localizer["Document"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data" asp-controller="Documents" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label for="Name" class="control-label">@Localizer["Name"]</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+                <label for="UserName" class="control-label">@Localizer["UserName"]</label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
+                <label for="Category" class="control-label">@Localizer["Category"]</label>
                 <select asp-for="Category" asp-items="@Html.GetEnumSelectList<Category>()" class="form-control"></select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FilePath" class="control-label"></label>
+                <label for="FilePath" class="control-label">@Localizer["FilePath"]</label>
                 <input asp-for="FilePath" type="file" name="files" class="form-control" />
                 <span asp-validation-for="FilePath" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
+                <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -1,65 +1,68 @@
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
 @model DemoDMS.Models.Document
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Localizer["Details"];
 }
 
-<h1>Details</h1>
+<h1>@Localizer["Details"]</h1>
 
 <div>
-    <h4>Document</h4>
+    <h4>@Localizer["Document"]</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Localizer[Html.DisplayNameFor(model => model.Name)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Extension)
+            @Localizer[Html.DisplayNameFor(model => model.Extension)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Extension)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
+            @Localizer[Html.DisplayNameFor(model => model.UserName)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UserName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
+            @Localizer[Html.DisplayNameFor(model => model.Category)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Category)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UploadDate)
+            @Localizer[Html.DisplayNameFor(model => model.UploadDate)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UploadDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedDate)
+            @Localizer[Html.DisplayNameFor(model => model.ModifiedDate)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ModifiedDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Size)
+            @Localizer[Html.DisplayNameFor(model => model.Size)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Size)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FilePath)
+            @Localizer[Html.DisplayNameFor(model => model.FilePath)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FilePath)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FileType)
+            @Localizer[Html.DisplayNameFor(model => model.FileType)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FileType)
@@ -67,7 +70,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Download" asp-route-id="@Model?.Id"><button type="button" class="btn btn-success">Download <i class="fas fa-download"></i></button></a> 
-    <a asp-action="Edit" asp-route-id="@Model?.Id"><button type="button" class="btn btn-primary">Edit <i class="fas fa-edit"></i></button></a> 
-    <a asp-action="Index"><button type="button" class="btn btn-secondary">Return to list <i class="fas fa-undo"></i></button></a>
+    <a asp-action="Download" asp-route-id="@Model?.Id"><button type="button" class="btn btn-success">@Localizer["Download"] <i class="fas fa-download"></i></button></a> 
+    <a asp-action="Edit" asp-route-id="@Model?.Id"><button type="button" class="btn btn-primary">@Localizer["Edit"] <i class="fas fa-edit"></i></button></a> 
+    <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"] <i class="fas fa-undo"></i></button></a>
 </div>

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 using DemoDMS.Data;
 using System.Globalization;
 
@@ -8,6 +10,14 @@ CultureInfo.DefaultThreadCurrentCulture
 = PersianDateExtensionMethods.GetPersianCulture();
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddPortableObjectLocalization();
+
+builder.Services.Configure<RequestLocalizationOptions>(options => options
+        .AddSupportedCultures("fa")
+        .AddSupportedUICultures("fa"));
+
+builder.Services.AddMvc().AddViewLocalization();
 
 builder.Services.AddDbContext<DemoDMSContext>(
     options => options.UseSqlite(
@@ -38,5 +48,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseRequestLocalization();
+
+app.MapRazorPages();
 
 app.Run();

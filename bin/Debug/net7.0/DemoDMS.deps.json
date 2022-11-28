@@ -11,7 +11,8 @@
           "Microsoft.EntityFrameworkCore.Design": "7.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.0"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.0",
+          "OrchardCore.Localization.Core": "1.5.0"
         },
         "runtime": {
           "DemoDMS.dll": {}
@@ -861,22 +862,22 @@
           "runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.0.1.0"
           },
           "runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.0.1.0"
           },
           "runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.0.1.0"
           },
           "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.0.1.0"
           }
         }
       },
@@ -1496,6 +1497,25 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "assemblyVersion": "6.3.1.1",
             "fileVersion": "6.3.1.1"
+          }
+        }
+      },
+      "OrchardCore.Localization.Abstractions/1.5.0": {
+        "runtime": {
+          "lib/net6.0/OrchardCore.Localization.Abstractions.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
+          }
+        }
+      },
+      "OrchardCore.Localization.Core/1.5.0": {
+        "dependencies": {
+          "OrchardCore.Localization.Abstractions": "1.5.0"
+        },
+        "runtime": {
+          "lib/net6.0/OrchardCore.Localization.Core.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
           }
         }
       },
@@ -3100,6 +3120,20 @@
       "sha512": "sha512-T/igBDLXCd+pH3YTWgGVNvYSOwbwaT30NyyM9ONjvlHlmaUjKBJpr9kH0AeL+Ado4EJsBhU3qxXVc6lyrpRcMw==",
       "path": "nuget.versioning/6.3.1",
       "hashPath": "nuget.versioning.6.3.1.nupkg.sha512"
+    },
+    "OrchardCore.Localization.Abstractions/1.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hiGu3jxdkUQIygPGXUT2RGbol3ZnoQDbUcystyQ6sBIK+qBPkB5ELV7ZIVQYM/hSDMSQ5ho5eYHpUEdpZ5Ff5A==",
+      "path": "orchardcore.localization.abstractions/1.5.0",
+      "hashPath": "orchardcore.localization.abstractions.1.5.0.nupkg.sha512"
+    },
+    "OrchardCore.Localization.Core/1.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5sq4CgZ29do7/CN7UL6k4o7+nfI4i+kqPe5BI9xrjQwO5CGUyETDyom//6ixTuTaPQ+VRrsCDlnmHLe9Wv+gWw==",
+      "path": "orchardcore.localization.core/1.5.0",
+      "hashPath": "orchardcore.localization.core.1.5.0.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

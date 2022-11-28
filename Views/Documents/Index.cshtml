@@ -1,45 +1,48 @@
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
 @model IEnumerable<DemoDMS.Models.Document>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Localizer["Index"];
 }
 
-<h1>Index</h1>
+<h1>@Localizer["Index"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Localizer["Create New"]</a>
 </p>
 <form asp-controller="Documents" asp-action="Index" method="get">
     <p>
         <input type="text" name="SearchString" value="@ViewBag.searchString"/>
-        <input type="submit" value="Search"/>
+        <input type="submit" value="@Localizer["Search"]"/>
     </p>
 </form>
 <table class="table sortable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Localizer[Html.DisplayNameFor(model => model.Name)]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Extension)
+                @Localizer[Html.DisplayNameFor(model => model.Extension)]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Localizer[Html.DisplayNameFor(model => model.UserName)]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Localizer[Html.DisplayNameFor(model => model.Category)]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UploadDate)
+                @Localizer[Html.DisplayNameFor(model => model.UploadDate)]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ModifiedDate)
+                @Localizer[Html.DisplayNameFor(model => model.ModifiedDate)]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Size)
+                @Localizer[Html.DisplayNameFor(model => model.Size)]
             </th>
-            <th>Actions</th>
+            <th>@Localizer["Actions"]</th>
         </tr>
     </thead>
     <tbody>

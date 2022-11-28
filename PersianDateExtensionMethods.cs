@@ -12,24 +12,26 @@ namespace System
             if (_Culture == null)
             {
                 _Culture = new CultureInfo("fa-IR");
+
+                System.Globalization.Calendar cal = new PersianCalendar();
+
                 DateTimeFormatInfo formatInfo = _Culture.DateTimeFormat;
+
                 formatInfo.AbbreviatedDayNames = new[] { "ی", "د", "س", "چ", "پ", "ج", "ش" };
                 formatInfo.DayNames = new[] { "یکشنبه", "دوشنبه", "سه شنبه", "چهار شنبه", "پنجشنبه", "جمعه", "شنبه" };
-                var monthNames = new[]
-                {
-                    "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن",
-                    "اسفند",
-                    ""
-                };
-                formatInfo.AbbreviatedMonthNames =
-                    formatInfo.MonthNames =
-                    formatInfo.MonthGenitiveNames = formatInfo.AbbreviatedMonthGenitiveNames = monthNames;
+                formatInfo.AbbreviatedMonthNames
+                = formatInfo.MonthNames
+                = formatInfo.MonthGenitiveNames
+                = formatInfo.AbbreviatedMonthGenitiveNames
+                = new[] { "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", "" };
+
                 formatInfo.AMDesignator = "ق.ظ";
                 formatInfo.PMDesignator = "ب.ظ";
+
                 formatInfo.ShortDatePattern = "yyyy/MM/dd";
                 formatInfo.LongDatePattern = "dddd, dd MMMM,yyyy";
+
                 formatInfo.FirstDayOfWeek = DayOfWeek.Saturday;
-                System.Globalization.Calendar cal = new PersianCalendar();
 
                 FieldInfo fieldInfo = _Culture.GetType().GetField("calendar", BindingFlags.NonPublic | BindingFlags.Instance);
                 if (fieldInfo != null)
@@ -43,12 +45,14 @@ namespace System
                 _Culture.NumberFormat.DigitSubstitution = DigitShapes.NativeNational;
                 _Culture.NumberFormat.NumberNegativePattern = 0;
             }
+
             return _Culture;
         }
 
-        public static string ToPersianDateString(this DateTime date, string format = "yyyy/MM/dd")
+        public static string ToPersianDateString(this DateTime date)
         {
-            return date.ToString(format, GetPersianCulture());
+            string format = "yyyy/MM/dd HH:mm:ss";
+            return date.ToLocalTime().ToString(format, GetPersianCulture());
         }
     }
 }

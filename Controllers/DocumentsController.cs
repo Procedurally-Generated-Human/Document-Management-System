@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using DemoDMS.Data;
 using DemoDMS.Models;
 
@@ -12,25 +13,27 @@ namespace DemoDMS.Controllers
 {
     public class DocumentsController : Controller
     {
+        private readonly IStringLocalizer<DocumentsController> _localizer;
         private readonly DemoDMSContext _context;
 
-        public DocumentsController(DemoDMSContext context)
+        public DocumentsController(IStringLocalizer<DocumentsController> localizer, DemoDMSContext context)
         {
+            _localizer = localizer;
             _context = context;
         }
 
         // GET: Documents
         public async Task<IActionResult> Index(string searchString)
         {
-                var documents = from m in _context.Document
-                select m;
+            var documents = from m in _context.Document
+            select m;
 
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    documents = documents.Where(s => s.Name!.Contains(searchString) || s.UserName!.Contains(searchString));
-                }
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                documents = documents.Where(s => s.Name!.Contains(searchString) || s.UserName!.Contains(searchString));
+            }
 
-                ViewData["searchString"] = searchString;
+            ViewData["searchString"] = searchString;
 
             return View(await documents.ToListAsync());
         }
@@ -38,14 +41,14 @@ namespace DemoDMS.Controllers
         // GET: Documents/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Document == null)
+            if(id == null || _context.Document == null)
             {
                 return NotFound();
             }
 
-            var document = await _context.Document
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (document == null)
+            var document = await _context.Document.FirstOrDefaultAsync(m => m.Id == id);
+
+            if(document == null)
             {
                 return NotFound();
             }
@@ -53,23 +56,24 @@ namespace DemoDMS.Controllers
             return View(document);
         }
 
-        public async Task<IActionResult> Download(int? id){
-   
-            if (id == null || _context.Document == null)
-                {
-                    return NotFound();
-                }
+        public async Task<IActionResult> Download(int? id)
+        {
+            if(id == null || _context.Document == null)
+            {
+                return NotFound();
+            }
 
             var document = await _context.Document.FindAsync(id);
-            if (document == null)
-                {
-                    return NotFound();
-                }
+            if(document == null)
+            {
+                return NotFound();
+            }
             
             string filePath = document.FilePath;
             string fileName = document.Name + document.Extension;
             string fileType = document.FileType;
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+
             return File(fileBytes, fileType, fileName);
         }
         
@@ -82,64 +86,70 @@ namespace DemoDMS.Controllers
         // POST: Documents/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-                [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(List<IFormFile> files, String name, String userName, Category category)
         {
-
-    foreach(var file in files)
-    {
-
-        var basePath = Path.Combine("Documents");
-        bool basePathExists = System.IO.Directory.Exists(basePath);
-        if (!basePathExists) Directory.CreateDirectory(basePath);
-        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-        var filePath = Path.Combine(basePath, file.FileName);
-        var extension = Path.GetExtension(file.FileName);
-
-        Console.WriteLine(file.ContentType);
-        Console.WriteLine(file.Length);
-
-        if (!System.IO.File.Exists(filePath))
-        {
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            foreach(var file in files)
             {
-                await file.CopyToAsync(stream);
+                var basePath = Path.Combine("Documents");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+
+                if(!basePathExists)
+                {
+                    Directory.CreateDirectory(basePath);
+                }
+
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var filePath = Path.Combine(basePath, file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+
+                Console.WriteLine(file.ContentType);
+                Console.WriteLine(file.Length);
+
+                if(!System.IO.File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
+                
+                var document = new Document
+                {
+                    UploadDate = DateTimeOffset.Now,
+                    ModifiedDate = DateTimeOffset.Now,
+                    UserName = userName,
+                    Name = name,
+                    FilePath = filePath,
+                    FileType = file.ContentType,
+                    Extension = extension,
+                    Size = file.Length,
+                    Category = category
+                };
+
+                _context.Document.Add(document);
+                _context.SaveChanges();
             }
-        }
-                    var document = new Document
-            {
-                UploadDate = DateTime.UtcNow,
-                ModifiedDate = DateTime.UtcNow,
-                UserName = userName,
-                Name = name,
-                FilePath = filePath,
-                FileType = file.ContentType,
-                Extension = extension,
-                Size = file.Length,
-                Category = category
-            };
-            _context.Document.Add(document);
-            _context.SaveChanges();
-        
-    }
+
             return RedirectToAction("Index");
         }
-
 
         // GET: Documents/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Document == null)
+            if(id == null || _context.Document == null)
             {
                 return NotFound();
             }
 
             var document = await _context.Document.FindAsync(id);
-            if (document == null)
+
+            if(document == null)
             {
                 return NotFound();
             }
+
             return View(document);
         }
 
@@ -150,49 +160,59 @@ namespace DemoDMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, Category category)
         {
-            if (id == null || _context.Document == null)
+            if(id == null || _context.Document == null)
             {
                 return NotFound();
             }
 
             var document = await _context.Document.FindAsync(id);
 
-            if (document == null)
+            if(document == null)
             {
                 return NotFound();
             }
 
-            if (id != document.Id)
+            if(id != document.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 bool isEmpty = !files.Any();
                 IFormFile file = null;
-                if (!isEmpty){
+
+                if (!isEmpty)
+                {
                     file = files[0];
-            }
+                }
 
                 document.Name = name;
                 document.UserName = userName;
                 document.Category = category;
-                if(!isEmpty){
-                    
+
+                if(!isEmpty)
+                {
                     var basePath = Path.Combine("Documents");
                     bool basePathExists = System.IO.Directory.Exists(basePath);
-                    if (!basePathExists) Directory.CreateDirectory(basePath);
+                    
+                    if(!basePathExists)
+                    {
+                        Directory.CreateDirectory(basePath);
+                    }
+
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                     var filePath = Path.Combine(basePath, file.FileName);
 
-                    if (!System.IO.File.Exists(filePath)){
-                        using (var stream = new FileStream(filePath, FileMode.Create)){
+                    if (!System.IO.File.Exists(filePath))
+                    {
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
                             await file.CopyToAsync(stream);
                         }
                     }
 
-                    document.ModifiedDate = DateTime.UtcNow;
+                    document.ModifiedDate = DateTimeOffset.Now;
                     document.Extension = Path.GetExtension(file.FileName);
                     document.Size = file.Length;
                     document.FileType = file.ContentType;
@@ -205,7 +225,7 @@ namespace DemoDMS.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DocumentExists(document.Id))
+                    if(!DocumentExists(document.Id))
                     {
                         return NotFound();
                     }
@@ -214,22 +234,24 @@ namespace DemoDMS.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(document);
         }
 
         // GET: Documents/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Document == null)
+            if(id == null || _context.Document == null)
             {
                 return NotFound();
             }
 
-            var document = await _context.Document
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (document == null)
+            var document = await _context.Document.FirstOrDefaultAsync(m => m.Id == id);
+
+            if(document == null)
             {
                 return NotFound();
             }
@@ -242,17 +264,20 @@ namespace DemoDMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Document == null)
+            if(_context.Document == null)
             {
                 return Problem("Entity set 'DemoDMSContext.Document'  is null.");
             }
+
             var document = await _context.Document.FindAsync(id);
-            if (document != null)
+
+            if(document != null)
             {
                 _context.Document.Remove(document);
             }
             
             await _context.SaveChangesAsync();
+            
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,15 +1,18 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using DemoDMS.Models;
 
 namespace DemoDMS.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly IStringLocalizer<HomeController> _localizer;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(IStringLocalizer<HomeController> localizer, ILogger<HomeController> logger)
     {
+        _localizer = localizer;
         _logger = logger;
     }
 
