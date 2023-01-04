@@ -1,0 +1,6 @@
+P -> Search autofill e
+M -> localize
+P -> Homepage
+M and P -> UI
+
+? P -> Thumbnail
