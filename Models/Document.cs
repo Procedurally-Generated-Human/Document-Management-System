@@ -32,8 +32,22 @@ namespace DemoDMS.Models
         [Display(Name="File")]
         public string? FilePath { get; set; }
         public string? FileType { get; set; }
+
+
+        // new fields
+
+        
+        public string? StudentName { get; set; }
+        public Faculty Faculty { get; set; }
+        public Department Department { get; set; }
+        public int? YearOfPublication { get; set; }
+        public Degree Degree { get; set; }   
+        public string? Supervisor { get; set; }      
         
 
     }
     public enum Category {اداری, مالی, مدیریت, عمومی}
+    public enum Faculty {}
+    public enum Department {}
+    public enum Degree {}
 }

@@ -40,6 +40,12 @@
                 <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
                 <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
             </div>
+
+            <div class="form-group">
+                <label for="StudentName" class="control-label"></label>
+                <input asp-for="StudentName" class="form-control" />
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </div>
         </form>
     </div>
 </div>
