@@ -13,7 +13,6 @@ namespace DemoDMS.Models
 
         public string? Extension { get; set;}
         
-        [Required]
         public string? UserName { get; set; } 
 
         public Category Category { get; set; }
@@ -47,7 +46,7 @@ namespace DemoDMS.Models
 
     }
     public enum Category {اداری, مالی, مدیریت, عمومی}
-    public enum Faculty {}
-    public enum Department {}
-    public enum Degree {}
+    public enum Faculty {فنی, انسانی, غلوم}
+    public enum Department {برق, کامپیوتر}
+    public enum Degree {ارشد, دکتری}
 }

@@ -14,29 +14,61 @@
     <h4>@Localizer["Document"]</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+         <dt class = "col-sm-2">
             @Localizer[Html.DisplayNameFor(model => model.Name)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
+
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.StudentName)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Degree)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Degree)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Faculty)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Faculty)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Department)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.YearOfPublication)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YearOfPublication)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Supervisor)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Supervisor)
+        </dd>
+
+
         <dt class = "col-sm-2">
             @Localizer[Html.DisplayNameFor(model => model.Extension)]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Extension)
-        </dd>
-        <dt class = "col-sm-2">
-            @Localizer[Html.DisplayNameFor(model => model.UserName)]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Localizer[Html.DisplayNameFor(model => model.Category)]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
         </dd>
         <dt class = "col-sm-2">
             @Localizer[Html.DisplayNameFor(model => model.UploadDate)]
@@ -68,6 +100,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FileType)
         </dd>
+
     </dl>
     
     <form asp-action="Delete">

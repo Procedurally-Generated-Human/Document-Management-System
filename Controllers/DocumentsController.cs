@@ -88,7 +88,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(List<IFormFile> files, String name, String userName, Category category, String studentName)
+        public async Task<IActionResult> Create(List<IFormFile> files, String name, String studentName, Degree degree, Faculty faculty, Department department, int year, string supervisor)
         {
             foreach(var file in files)
             {
@@ -119,14 +119,16 @@ namespace DemoDMS.Controllers
                 {
                     UploadDate = DateTimeOffset.Now,
                     ModifiedDate = DateTimeOffset.Now,
-                    UserName = userName,
                     Name = name,
                     FilePath = filePath,
                     FileType = file.ContentType,
                     Extension = extension,
                     Size = file.Length,
-                    Category = category,
-                    StudentName = studentName
+                    StudentName = studentName,
+                    Degree = degree,
+                    Faculty = faculty,
+                    YearOfPublication = year,
+                    Supervisor = supervisor
                 };
 
                 _context.Document.Add(document);
@@ -159,7 +161,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, Category category, String studentName)
+        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, Category category, String studentName, Degree degree, Faculty faculty, Department department, int year, string supervisor)
         {
             if(id == null || _context.Document == null)
             {
