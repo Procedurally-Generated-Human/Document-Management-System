@@ -159,3 +159,6 @@ msgstr "تاریخ انتشار"
 
 msgid "Publication Date"
 msgstr "تاریخ انتشار"
+
+msgid "Folders"
+msgstr "پوشه‌ها"

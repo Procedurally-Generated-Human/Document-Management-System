@@ -27,24 +27,6 @@ namespace DemoDMS.Controllers
                           Problem("Entity set 'DemoDMScnt.Folder'  is null.");
         }
 
-        // GET: Folders/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Folder == null)
-            {
-                return NotFound();
-            }
-
-            var folder = await _context.Folder
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (folder == null)
-            {
-                return NotFound();
-            }
-
-            return View(folder);
-        }
-
         // GET: Folders/Create
         public IActionResult Create()
         {
