@@ -10,6 +10,8 @@ CultureInfo.DefaultThreadCurrentCulture
 = PersianDateExtensionMethods.GetPersianCulture();
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<DemoDMSContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DemoDMSContext") ?? throw new InvalidOperationException("Connection string 'DemoDMScnt' not found.")));
 
 builder.Services.AddPortableObjectLocalization();
 

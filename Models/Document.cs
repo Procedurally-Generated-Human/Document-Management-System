@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DemoDMS.Models
 {
     
-    public class Document
+    public class Document: Item
     {
         public int Id { get; set; }
 

@@ -14,6 +14,8 @@ namespace DemoDMS.Data
         {
         }
 
-        public DbSet<DemoDMS.Models.Document> Document { get; set; } = default!;
+        public DbSet<DemoDMS.Models.Document> Document { get; set; }
+
+        public DbSet<DemoDMS.Models.Folder> Folder { get; set; }
     }
 }
