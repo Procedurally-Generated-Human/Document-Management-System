@@ -3,6 +3,7 @@ using System;
 using DemoDMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoDMS.Migrations
 {
     [DbContext(typeof(DemoDMSContext))]
-    partial class DemoDMSContextModelSnapshot : ModelSnapshot
+    [Migration("20230116142133_25")]
+    partial class _25
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -23,7 +26,7 @@ namespace DemoDMS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AuthorName")
+                    b.Property<string>("Author")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Department")
@@ -57,7 +60,7 @@ namespace DemoDMS.Migrations
                     b.Property<double?>("Size")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("SupervisorName")
+                    b.Property<string>("Supervisor")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset>("UploadDate")

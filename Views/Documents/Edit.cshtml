@@ -22,54 +22,49 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="UserName" class="control-label">@Localizer["UserName"]</label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <label for="AuthorName" class="control-label">@Localizer["Author Name"]</label>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="Category" class="control-label">@Localizer["Category"]</label>
-                <select asp-for="Category" asp-items="@Html.GetEnumSelectList<Category>()" class="form-control"></select>
-                <span asp-validation-for="Category" class="text-danger"></span>
+                <label for="SupervisorName" class="control-label">@Localizer["Supervisor Name"]</label>
+                <input asp-for="SupervisorName" class="form-control" />
+                <span asp-validation-for="SupervisorName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="FilePath" class="control-label">@Localizer["FilePath"]</label>
-                <input asp-for="FilePath" type="file" name="files" class="form-control" />
-                <span asp-validation-for="FilePath" class="text-danger"></span>
+                <label for="Level" class="control-label">@Localizer["Level"]</label>
+                <input asp-for="Level" class="form-control" />
+                <span asp-validation-for="Level" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="StudentName" class="control-label">Student Name</label>
-                <input asp-for="StudentName" class="form-control" />
-                <span asp-validation-for="StudentName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="Degree" class="control-label">Degree</label>
-                <input asp-for="Degree" class="form-control" />
-                <span asp-validation-for="Degree" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="Faculty" class="control-label">Faculty</label>
-                <input asp-for="Faculty" class="form-control" />
-                <span asp-validation-for="Faculty" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="Department" class="control-label">Department</label>
+                <label for="Department" class="control-label">@Localizer["Department"]</label>
                 <input asp-for="Department" class="form-control" />
                 <span asp-validation-for="Department" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="YearOfPublication" class="control-label">Year of Publication</label>
-                <input asp-for="YearOfPublication" class="form-control" />
-                <span asp-validation-for="YearOfPublication" class="text-danger"></span>
+                <label for="Faculty" class="control-label">@Localizer["Faculty"]</label>
+                <input asp-for="Faculty" class="form-control" />
+                <span asp-validation-for="Faculty" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="Supervisor" class="control-label">Supervisor</label>
-                <input asp-for="Supervisor" class="form-control" />
-                <span asp-validation-for="Supervisor" class="text-danger"></span>
+                <label for="PublicationDate" class="control-label">@Localizer["Publication Date"]</label>
+                <input asp-for="PublicationDate" class="form-control" />
+                <span asp-validation-for="PublicationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="FilePath" class="control-label">@Localizer["File Path"]</label>
+                <input asp-for="FilePath" type="file" name="files" class="form-control" />
+                <span asp-validation-for="FilePath" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
                 <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
                 <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
+            </div>
+            <div class="form-group">
+                <label for="UserName" class="control-label">@Localizer["User Name"]</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
         </form>
     </div>
