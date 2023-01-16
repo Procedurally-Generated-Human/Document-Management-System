@@ -85,13 +85,22 @@ msgstr "پسوند"
 msgid "UserName"
 msgstr "نام کاربر"
 
+msgid "User Name"
+msgstr "نام کاربر"
+
 msgid "Category"
 msgstr "دسته‌بندی"
 
 msgid "UploadDate"
 msgstr "زمان آپلود"
 
+msgid "Upload Date"
+msgstr "زمان آپلود"
+
 msgid "ModifiedDate"
+msgstr "زمان اصلاح"
+
+msgid "Modified Date"
 msgstr "زمان اصلاح"
 
 msgid "Size"
@@ -103,7 +112,13 @@ msgstr "فایل"
 msgid "FileType"
 msgstr "تیپ فایل"
 
+msgid "File Type"
+msgstr "تیپ فایل"
+
 msgid "FilePath"
+msgstr "آدرس فایل"
+
+msgid "File Path"
 msgstr "آدرس فایل"
 
 msgid "Management"
@@ -117,3 +132,30 @@ msgstr "عمومی"
 
 msgid "Security"
 msgstr "حراست"
+
+msgid "AuthorName"
+msgstr "نام نویسنده"
+
+msgid "Author Name"
+msgstr "نام نویسنده"
+
+msgid "SupervisorName"
+msgstr "نام استاد راهنما"
+
+msgid "Supervisor Name"
+msgstr "نام استاد راهنما"
+
+msgid "Level"
+msgstr "مقطع"
+
+msgid "Department"
+msgstr "دانشکده"
+
+msgid "Faculty"
+msgstr "گروه"
+
+msgid "PublicationDate"
+msgstr "تاریخ انتشار"
+
+msgid "Publication Date"
+msgstr "تاریخ انتشار"

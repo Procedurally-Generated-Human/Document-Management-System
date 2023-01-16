@@ -88,7 +88,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(List<IFormFile> files, String name, String studentName, Degree degree, Faculty faculty, Department department, int year, string supervisor)
+        public async Task<IActionResult> Create(List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate)
         {
             foreach(var file in files)
             {
@@ -114,7 +114,9 @@ namespace DemoDMS.Controllers
                         await file.CopyToAsync(stream);
                     }
                 }
-                
+
+                //var offset = DateTimeOffset.Now.Offset;
+
                 var document = new Document
                 {
                     UploadDate = DateTimeOffset.Now,
@@ -124,11 +126,13 @@ namespace DemoDMS.Controllers
                     FileType = file.ContentType,
                     Extension = extension,
                     Size = file.Length,
-                    StudentName = studentName,
-                    Degree = degree,
+                    AuthorName = authorName,
+                    SupervisorName = supervisorName,
+                    Level = level,
+                    Department = department,
                     Faculty = faculty,
-                    YearOfPublication = year,
-                    Supervisor = supervisor
+                    PublicationDate = publicationDate,
+                    //PublicationDate = new DateTimeOffset(publicationYear, publicationMonth, publicationDay, 0, 0, 0, offset),
                 };
 
                 _context.Document.Add(document);
@@ -161,7 +165,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, Category category, String studentName, Degree degree, Faculty faculty, Department department, int year, string supervisor)
+        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate)
         {
             if(id == null || _context.Document == null)
             {
@@ -192,8 +196,7 @@ namespace DemoDMS.Controllers
 
                 document.Name = name;
                 document.UserName = userName;
-                document.Category = category;
-                document.StudentName = studentName;
+                document.AuthorName = authorName;
 
                 if(!isEmpty)
                 {
@@ -221,6 +224,10 @@ namespace DemoDMS.Controllers
                     document.Size = file.Length;
                     document.FileType = file.ContentType;
                     document.FilePath = filePath;
+                    //var offset = DateTimeOffset.Now.Offset;
+                    //document.PublicationDate = new DateTimeOffset(publicationYear, publicationMonth, publicationDay, 0, 0, 0, offset);
+
+
                 }
                 try
                 {
