@@ -19,8 +19,10 @@
 </form>
 
 <p>
+    <a asp-action="Index" asp-route-id="@ViewBag.ParentId"><i class="fas fa-arrow-left fa-lg"></i></a>
     <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Folder"]</button></a>
     <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Document"]</button></a>
+
 </p>
 
 <br>
