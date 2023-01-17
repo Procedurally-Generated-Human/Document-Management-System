@@ -14,22 +14,33 @@ namespace DemoDMS.Controllers
     {
         private readonly DemoDMSContext _context;
 
+
         public FoldersController(DemoDMSContext context)
         {
             _context = context;
+
         }
 
         // GET: Folders
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-              return _context.Folder != null ? 
-                          View(await _context.Folder.ToListAsync()) :
-                          Problem("Entity set 'DemoDMScnt.Folder'  is null.");
+            
+            var folders = from m in _context.Folder
+            select m;
+            var folder = folders.Where(m => m.Id==id);
+            return View(folders);
+        }
+
+        public async Task<IActionResult> initial(int? id)
+        {
+            var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
+            return View(folder);
         }
 
         // GET: Folders/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            ViewData["parentId"] = id;
             return View();
         }
 
@@ -38,15 +49,21 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Folder folder)
+        public async Task<IActionResult> Create(string name, int parentId)
         {
-            if (ModelState.IsValid)
-            {
+                Folder folder = new Folder();
+                folder.Name = name;
                 _context.Add(folder);
                 await _context.SaveChangesAsync();
+
+                var parentFolder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == 31);
+                parentFolder.Name = "AAAAAAAAAAA";
+                _context.Folder.Attach(parentFolder);
+                        _context.Entry(parentFolder).State = EntityState.Modified;
+                        _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
-            }
-            return View(folder);
+
         }
 
         // GET: Folders/Edit/5
