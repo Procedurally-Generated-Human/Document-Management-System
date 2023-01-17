@@ -18,19 +18,42 @@
 
 <br>
 
-<table class="table">
+<table class="table sortable">
     <thead>
         <tr>
             <th>
-                @Localizer[Html.DisplayNameForInnerType(((Folder folder) => folder.Name))]
+                @Localizer[Html.DisplayNameForInnerType(((Document document) => document.Name))]
             </th>
+            <th>
+                @Localizer[Html.DisplayNameForInnerType(((Document document) => document.DateCreated))]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameForInnerType(((Document document) => document.DateModified))]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameForInnerType(((Document document) => document.Size))]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameForInnerType(((Document document) => document.Extension))]
+            </th>
+            <th>@Localizer["Actions"]</th>
         </tr>
     </thead>
     <tbody>
     @foreach(Folder folder in Model.Folders) {
         <tr>
             <td>
-                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(modelItem => folder.Name)</a>
+                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.Name)</a>
+            </td>
+            <td>
+                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.DateCreated)</a>
+            </td>
+            <td>
+                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.DateModified)</a>
+            </td>
+            <td>
+            </td>
+            <td>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@folder.Id">@Localizer["Edit"]</a> |
@@ -42,7 +65,25 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => document.Name)
+                @Html.DisplayFor(documentItem => document.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(documentItem => document.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(documentItem => document.DateModified)
+            </td>
+            <td>
+                @Html.DisplayFor(documentItem => document.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(documentItem => document.Extension)
+            </td>
+            <td> 
+                <a asp-action="Details" asp-route-id="@document.Id"><i class="fas fa-info-circle fa-lg"></i></a> 
+                <a asp-action="Edit" asp-route-id="@document.Id"><i class="fas fa-edit fa-lg" style="color:orange"></i></a>
+                <a asp-action="Download" asp-route-id="@document.Id"><i class="fas fa-download fa-lg" style="color:green"></i></a>
+                <a asp-action="Delete" asp-route-id="@document.Id"><i class="fas fa-trash fa-lg" style="color:red"></i></a>
             </td>
         </tr>
     }
