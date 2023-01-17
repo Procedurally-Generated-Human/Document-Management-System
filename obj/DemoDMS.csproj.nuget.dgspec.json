@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laptop\\Downloads\\Programming\\SE\\DMS-demo\\DemoDMS.csproj": {}
+    "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laptop\\Downloads\\Programming\\SE\\DMS-demo\\DemoDMS.csproj": {
+    "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laptop\\Downloads\\Programming\\SE\\DMS-demo\\DemoDMS.csproj",
+        "projectUniqueName": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
         "projectName": "DemoDMS",
-        "projectPath": "C:\\Users\\laptop\\Downloads\\Programming\\SE\\DMS-demo\\DemoDMS.csproj",
+        "projectPath": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
         "packagesPath": "C:\\Users\\laptop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laptop\\Downloads\\Programming\\SE\\DMS-demo\\obj\\",
+        "outputPath": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,12 +1,16 @@
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
 @model DemoDMS.Models.Folder
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewBag.Title = Localizer["Edit"];
 }
 
-<h1>Edit</h1>
+<h1>@Localizer["Edit"]</h1>
 
-<h4>Folder</h4>
+<h4>@Localizer["Folder"]</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,6 +22,7 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

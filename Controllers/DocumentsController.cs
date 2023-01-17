@@ -25,8 +25,7 @@ namespace DemoDMS.Controllers
         // GET: Documents
         public async Task<IActionResult> Index(string searchString)
         {
-            var documents = from m in _context.Document
-            select m;
+            var documents = from m in _context.Document select m;
 
             if(!String.IsNullOrEmpty(searchString))
             {
@@ -64,6 +63,7 @@ namespace DemoDMS.Controllers
             }
 
             var document = await _context.Document.FindAsync(id);
+
             if(document == null)
             {
                 return NotFound();
@@ -80,10 +80,8 @@ namespace DemoDMS.Controllers
         // GET: Documents/Create
         public IActionResult Create(int parentId)
         {
+            ViewBag.parentId = parentId;
 
-            Console.WriteLine("____________________________-------------_________-----____-");
-                Console.WriteLine(parentId);
-            ViewData["parentId"] = parentId;
             return View();
         }
 
@@ -107,9 +105,6 @@ namespace DemoDMS.Controllers
                 var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 var filePath = Path.Combine(basePath, file.FileName);
                 var extension = Path.GetExtension(file.FileName);
-
-                Console.WriteLine(file.ContentType);
-                Console.WriteLine(file.Length);
 
                 if(!System.IO.File.Exists(filePath))
                 {
@@ -140,15 +135,11 @@ namespace DemoDMS.Controllers
                     //PublicationDate = new DateTimeOffset(publicationYear, publicationMonth, publicationDay, 0, 0, 0, offset),
                 };
 
-                Console.WriteLine("____________________________-------------_________-----____-");
-                Console.WriteLine(document.ParentId);
-                Console.WriteLine(parentId);
-
                 _context.Document.Add(document);
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Folders", new {id = parentId});
         }
 
         // GET: Documents/Edit/5
@@ -174,7 +165,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate)
+        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate, int parentId)
         {
             if(id == null || _context.Document == null)
             {
@@ -234,15 +225,14 @@ namespace DemoDMS.Controllers
                     document.FilePath = filePath;
                     //var offset = DateTimeOffset.Now.Offset;
                     //document.PublicationDate = new DateTimeOffset(publicationYear, publicationMonth, publicationDay, 0, 0, 0, offset);
-
-
                 }
+
                 try
                 {
                     _context.Update(document);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch(DbUpdateConcurrencyException)
                 {
                     if(!DocumentExists(document.Id))
                     {
@@ -254,7 +244,7 @@ namespace DemoDMS.Controllers
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Folders", new {id = parentId});
             }
 
             return View(document);
@@ -285,7 +275,7 @@ namespace DemoDMS.Controllers
         {
             if(_context.Document == null)
             {
-                return Problem("Entity set 'DemoDMSContext.Document'  is null.");
+                return Problem("Entity set 'DemoDMSContext.Document' is null.");
             }
 
             var document = await _context.Document.FindAsync(id);
@@ -297,7 +287,7 @@ namespace DemoDMS.Controllers
             
             await _context.SaveChangesAsync();
             
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Folders", new {id = document.ParentId});
         }
 
         private bool DocumentExists(int id)

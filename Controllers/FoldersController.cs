@@ -24,8 +24,6 @@ namespace DemoDMS.Controllers
         // GET: Folders
         public async Task<IActionResult> Index(int id, string searchString)
         {
-
-
             ViewBag.currentID = id;
 
             var folders = from m in _context.Folder select m;
@@ -38,8 +36,8 @@ namespace DemoDMS.Controllers
                 model.Folders = folders.Where(m => m.Name!.Contains(searchString));
                 model.Documents = documents.Where(m => m.Name!.Contains(searchString));
             }
-
-            else{
+            else
+            {
                 model.Folders = folders.Where(m => m.ParentId == id);
                 model.Documents = documents.Where(m => m.ParentId == id);
             }
@@ -78,14 +76,14 @@ namespace DemoDMS.Controllers
         // GET: Folders/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Folder == null)
+            if(id == null || _context.Folder == null)
             {
                 return NotFound();
             }
 
             var folder = await _context.Folder.FindAsync(id);
 
-            if (folder == null)
+            if(folder == null)
             {
                 return NotFound();
             }
@@ -98,23 +96,24 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Folder folder)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateCreated,DateModified,ParentId")] Folder folder)
         {
-            if (id != folder.Id)
+            if(id != folder.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
+                    folder.DateModified = DateTimeOffset.Now;
                     _context.Update(folder);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch(DbUpdateConcurrencyException)
                 {
-                    if (!FolderExists(folder.Id))
+                    if(!FolderExists(folder.Id))
                     {
                         return NotFound();
                     }
@@ -124,7 +123,7 @@ namespace DemoDMS.Controllers
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new {id = folder.ParentId});
             }
 
             return View(folder);
@@ -133,14 +132,14 @@ namespace DemoDMS.Controllers
         // GET: Folders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Folder == null)
+            if(id == null || _context.Folder == null)
             {
                 return NotFound();
             }
 
             var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (folder == null)
+            if(folder == null)
             {
                 return NotFound();
             }
@@ -153,14 +152,14 @@ namespace DemoDMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Folder == null)
+            if(_context.Folder == null)
             {
-                return Problem("Entity set 'DemoDMScnt.Folder'  is null.");
+                return Problem("Entity set 'DemoDMScnt.Folder' is null.");
             }
 
             var folder = await _context.Folder.FindAsync(id);
 
-            if (folder != null)
+            if(folder != null)
             {
                 _context.Folder.Remove(folder);
             }
