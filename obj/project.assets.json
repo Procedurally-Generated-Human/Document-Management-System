@@ -10851,11 +10851,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
+      "projectUniqueName": "c:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
       "projectName": "DemoDMS",
-      "projectPath": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
+      "projectPath": "c:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
       "packagesPath": "C:\\Users\\laptop\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\obj\\",
+      "outputPath": "c:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -10927,5 +10927,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file c:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

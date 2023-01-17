@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dLjPAYGqnl9YFbTNYkGvhQ4ncv36ppdJwPwhVBSG1ebklUp0DR8Mc6QOeJLThAsd0+rFge74LX+J/ElR5DT3XQ==",
+  "dgSpecHash": "miEIr4tx+Q/9+qNnrM89zmYZ+XpIqTDEp/5I093bWB6uF9zzA4D24N+LzhDUSGIuByGJqwYsqbj+guRie3fxFQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
+  "projectFilePath": "c:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\DemoDMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\laptop\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\laptop\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
@@ -195,5 +195,12 @@
     "C:\\Users\\laptop\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\laptop\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file c:\\Users\\laptop\\Downloads\\Programming\\asp\\DMS-demo\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
