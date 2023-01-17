@@ -55,11 +55,11 @@ namespace DemoDMS.Controllers
                 await _context.SaveChangesAsync();
 
 
-                
-
                 return RedirectToAction("Index", new {id = parentId});
 
         }
+
+
 
         // GET: Folders/Edit/5
         public async Task<IActionResult> Edit(int? id)

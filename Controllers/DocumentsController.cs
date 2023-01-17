@@ -78,8 +78,12 @@ namespace DemoDMS.Controllers
         }
         
         // GET: Documents/Create
-        public IActionResult Create()
+        public IActionResult Create(int parentId)
         {
+
+            Console.WriteLine("____________________________-------------_________-----____-");
+                Console.WriteLine(parentId);
+            ViewData["parentId"] = parentId;
             return View();
         }
 
@@ -88,7 +92,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate)
+        public async Task<IActionResult> Create(List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate, int parentId)
         {
             foreach(var file in files)
             {
@@ -132,8 +136,13 @@ namespace DemoDMS.Controllers
                     Department = department,
                     Faculty = faculty,
                     PublicationDate = publicationDate,
+                    ParentId = parentId
                     //PublicationDate = new DateTimeOffset(publicationYear, publicationMonth, publicationDay, 0, 0, 0, offset),
                 };
+
+                Console.WriteLine("____________________________-------------_________-----____-");
+                Console.WriteLine(document.ParentId);
+                Console.WriteLine(parentId);
 
                 _context.Document.Add(document);
                 _context.SaveChanges();

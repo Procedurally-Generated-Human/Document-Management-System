@@ -13,6 +13,7 @@
 
 <p>
     <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["Create New"]</button></a>
+    <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-secondary">New Document</button></a>
 </p>
 
 <br>
