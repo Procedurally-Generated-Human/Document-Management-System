@@ -37,7 +37,16 @@
                 <a asp-action="Delete" asp-route-id="@folder.Id">@Localizer["Delete"]</a>
             </td>
         </tr>
-}
+    }
+    @foreach (Document document in Model.Documents)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => document.Name)
+            </td>
+        </tr>
+    }
+
 
     </tbody>
 </table>

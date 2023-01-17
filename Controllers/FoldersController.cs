@@ -27,9 +27,11 @@ namespace DemoDMS.Controllers
             ViewBag.currentID = id;
 
             var folders = from m in _context.Folder select m;
+            var documents = from m in _context.Document select m;
 
             dynamic model = new ExpandoObject();
             model.Folders = folders.Where(m => m.ParentId == id);
+            model.Documents = documents.Where(m => m.ParentId == id);
 
             return View(model);
         }
