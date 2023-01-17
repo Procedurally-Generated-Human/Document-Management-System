@@ -50,7 +50,7 @@
     @foreach(Folder folder in Model.Folders) {
         <tr>
             <td>
-                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.Name)</a>
+                <i class="fas fa-folder fa-lg" style="color:Khaki"></i> <a asp-action="index" asp-route-id="@folder.Id" style="text-decoration: none;">@Html.DisplayFor(folderItem => folder.Name)</a>
             </td>
             <td>
                 <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.DateCreated)</a>
@@ -63,8 +63,8 @@
             <td>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@folder.Id">@Localizer["Edit"]</a> |
-                <a asp-action="Delete" asp-route-id="@folder.Id">@Localizer["Delete"]</a>
+                <a asp-action="Edit" asp-route-id="@folder.Id"><i class="fas fa-edit fa-lg" style="color:orange"></i></a> 
+                <a asp-action="Delete" asp-route-id="@folder.Id"><i class="fas fa-trash fa-lg" style="color:red"></i></a>
             </td>
         </tr>
     }
@@ -72,7 +72,8 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(documentItem => document.Name)
+                <i class="fas fa-file fa-lg" style="color:grey"></i> 
+                <a asp-controller="Documents" asp-action="Details" asp-route-id="@document.Id" style="text-decoration: none;">@Html.DisplayFor(documentItem => document.Name)</a>
             </td>
             <td>
                 @Html.DisplayFor(documentItem => document.DateCreated)
