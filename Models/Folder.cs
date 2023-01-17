@@ -20,5 +20,7 @@ namespace DemoDMS.Models
         public DateTimeOffset DateModified { get; set; }
 
         public List<Item> Contents = new List<Item>();
+
+        public int ParentId {get; set;}
     }
 }

@@ -42,6 +42,8 @@ namespace DemoDMS.Models
         [DataType(DataType.DateTime)]
         public DateTimeOffset PublicationDate { get; set; }
 
+        public int ParentId {get; set;}
+
     }
 
     public enum Level {کارشناسی, ارشد, دکترا}

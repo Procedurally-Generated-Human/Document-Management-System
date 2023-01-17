@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoDMS.Data;
 using DemoDMS.Models;
+using System.Collections;
 
 namespace DemoDMS.Controllers
 {
@@ -27,15 +28,11 @@ namespace DemoDMS.Controllers
             
             var folders = from m in _context.Folder
             select m;
-            var folder = folders.Where(m => m.Id==id);
-            return View(folders);
-        }
-
-        public async Task<IActionResult> initial(int? id)
-        {
-            var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
+            var folder = folders.Where(m => m.ParentId==id);
+            ViewData["currentID"] = id;
             return View(folder);
         }
+
 
         // GET: Folders/Create
         public IActionResult Create(int id)
@@ -53,16 +50,14 @@ namespace DemoDMS.Controllers
         {
                 Folder folder = new Folder();
                 folder.Name = name;
+                folder.ParentId = parentId;
                 _context.Add(folder);
                 await _context.SaveChangesAsync();
 
-    
-                var parentFolder = await _context.Folder.FindAsync(parentId);
-                parentFolder.Name = "AAAAAAAAAA";
-                _context.Update(parentFolder);
-                await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                
+
+                return RedirectToAction("Index", new {id = parentId});
 
         }
 

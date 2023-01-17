@@ -12,7 +12,7 @@
 <br>
 
 <p>
-    <a asp-action="Create"><button type="button" class="btn btn-secondary">@Localizer["Create New"]</button></a>
+    <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["Create New"]</button></a>
 </p>
 
 <br>
@@ -30,7 +30,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <a asp-action="initial" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                <a asp-action="index" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -15,5 +15,7 @@ namespace DemoDMS.Models
         DateTimeOffset DateModified { get; set; }
 
         bool IsComposite();
+
+        int ParentId {get; set;}
     }
 }
