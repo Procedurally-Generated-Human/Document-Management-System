@@ -56,11 +56,11 @@ namespace DemoDMS.Controllers
                 _context.Add(folder);
                 await _context.SaveChangesAsync();
 
-                var parentFolder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == 31);
-                parentFolder.Name = "AAAAAAAAAAA";
-                _context.Folder.Attach(parentFolder);
-                        _context.Entry(parentFolder).State = EntityState.Modified;
-                        _context.SaveChanges();
+    
+                var parentFolder = await _context.Folder.FindAsync(parentId);
+                parentFolder.Name = "AAAAAAAAAA";
+                _context.Update(parentFolder);
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
 
