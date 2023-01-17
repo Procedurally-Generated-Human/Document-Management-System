@@ -168,3 +168,9 @@ msgstr "تاریخ انتشار"
 
 msgid "Folders"
 msgstr "پوشه‌ها"
+
+msgid "New Folder"
+msgstr "پوشه‌ی جدید"
+
+msgid "New Document"
+msgstr "سند جدید"

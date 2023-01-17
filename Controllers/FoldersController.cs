@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DemoDMS.Data;
 using DemoDMS.Models;
 using System.Collections;
+using System.Dynamic;
 
 namespace DemoDMS.Controllers
 {
@@ -15,29 +16,29 @@ namespace DemoDMS.Controllers
     {
         private readonly DemoDMSContext _context;
 
-
         public FoldersController(DemoDMSContext context)
         {
             _context = context;
-
         }
 
         // GET: Folders
         public async Task<IActionResult> Index(int id)
         {
-            
-            var folders = from m in _context.Folder
-            select m;
-            var folder = folders.Where(m => m.ParentId==id);
-            ViewData["currentID"] = id;
-            return View(folder);
-        }
+            ViewBag.currentID = id;
 
+            var folders = from m in _context.Folder select m;
+
+            dynamic model = new ExpandoObject();
+            model.Folders = folders.Where(m => m.ParentId == id);
+
+            return View(model);
+        }
 
         // GET: Folders/Create
         public IActionResult Create(int id)
         {
-            ViewData["parentId"] = id;
+            ViewBag.parentId = id;
+
             return View();
         }
 
@@ -48,18 +49,18 @@ namespace DemoDMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string name, int parentId)
         {
-                Folder folder = new Folder();
-                folder.Name = name;
-                folder.ParentId = parentId;
-                _context.Add(folder);
-                await _context.SaveChangesAsync();
+            Folder folder = new Folder {
+                Name = name,
+                DateCreated = DateTimeOffset.Now,
+                DateModified = DateTimeOffset.Now,
+                ParentId = parentId,
+            };
 
+            _context.Add(folder);
+            await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", new {id = parentId});
-
+            return RedirectToAction("Index", new {id = parentId});
         }
-
-
 
         // GET: Folders/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -70,10 +71,12 @@ namespace DemoDMS.Controllers
             }
 
             var folder = await _context.Folder.FindAsync(id);
+
             if (folder == null)
             {
                 return NotFound();
             }
+
             return View(folder);
         }
 
@@ -107,8 +110,10 @@ namespace DemoDMS.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(folder);
         }
 
@@ -120,8 +125,8 @@ namespace DemoDMS.Controllers
                 return NotFound();
             }
 
-            var folder = await _context.Folder
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
+
             if (folder == null)
             {
                 return NotFound();
@@ -139,13 +144,16 @@ namespace DemoDMS.Controllers
             {
                 return Problem("Entity set 'DemoDMScnt.Folder'  is null.");
             }
+
             var folder = await _context.Folder.FindAsync(id);
+
             if (folder != null)
             {
                 _context.Folder.Remove(folder);
             }
             
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,10 +1,10 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@model IEnumerable<DemoDMS.Models.Folder>
+@model dynamic
 
 @{
-    ViewData["Title"] = Localizer["Index"];
+    ViewBag.Title = Localizer["Index"];
 }
 
 <h1>@Localizer["Index"]</h1>
@@ -12,8 +12,8 @@
 <br>
 
 <p>
-    <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["Create New"]</button></a>
-    <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-secondary">New Document</button></a>
+    <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Folder"]</button></a>
+    <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Document"]</button></a>
 </p>
 
 <br>
@@ -22,20 +22,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Localizer[Html.DisplayNameForInnerType(((Folder folder) => folder.Name))]
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach(Folder folder in Model.Folders) {
         <tr>
             <td>
-                <a asp-action="index" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(modelItem => folder.Name)</a>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@folder.Id">@Localizer["Edit"]</a> |
+                <a asp-action="Delete" asp-route-id="@folder.Id">@Localizer["Delete"]</a>
             </td>
         </tr>
 }

@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DemoDMS.Models
 {
-    
     public class Document: Item
     {
         public int Id { get; set; }
@@ -43,7 +42,6 @@ namespace DemoDMS.Models
         public DateTimeOffset PublicationDate { get; set; }
 
         public int ParentId {get; set;}
-
     }
 
     public enum Level {کارشناسی, ارشد, دکترا}
