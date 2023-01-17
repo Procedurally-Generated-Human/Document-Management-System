@@ -1,14 +1,22 @@
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
 @model IEnumerable<DemoDMS.Models.Folder>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Localizer["Index"];
 }
 
-<h1>Index</h1>
+<h1>@Localizer["Index"]</h1>
+
+<br>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><button type="button" class="btn btn-secondary">@Localizer["Create New"]</button></a>
 </p>
+
+<br>
+
 <table class="table">
     <thead>
         <tr>

@@ -30,7 +30,7 @@ namespace DemoDMS.Controllers
 
             if(!String.IsNullOrEmpty(searchString))
             {
-                documents = documents.Where(s => s.Name!.Contains(searchString) || s.UserName!.Contains(searchString));
+                documents = documents.Where(s => s.Name!.Contains(searchString));
             }
 
             ViewData["searchString"] = searchString;
@@ -118,9 +118,9 @@ namespace DemoDMS.Controllers
                 //var offset = DateTimeOffset.Now.Offset;
 
                 var document = new Document
-                {
-                    UploadDate = DateTimeOffset.Now,
-                    ModifiedDate = DateTimeOffset.Now,
+                { 
+                    DateCreated = DateTimeOffset.Now,
+                    DateModified = DateTimeOffset.Now,
                     Name = name,
                     FilePath = filePath,
                     FileType = file.ContentType,
@@ -165,7 +165,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String userName, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate)
+        public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate)
         {
             if(id == null || _context.Document == null)
             {
@@ -195,7 +195,6 @@ namespace DemoDMS.Controllers
                 }
 
                 document.Name = name;
-                document.UserName = userName;
                 document.AuthorName = authorName;
 
                 if(!isEmpty)
@@ -219,7 +218,7 @@ namespace DemoDMS.Controllers
                         }
                     }
 
-                    document.ModifiedDate = DateTimeOffset.Now;
+                    document.DateModified = DateTimeOffset.Now;
                     document.Extension = Path.GetExtension(file.FileName);
                     document.Size = file.Length;
                     document.FileType = file.ContentType;

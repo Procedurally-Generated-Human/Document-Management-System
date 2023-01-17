@@ -26,6 +26,12 @@ namespace DemoDMS.Migrations
                     b.Property<string>("AuthorName")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("DateModified")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Department")
                         .HasColumnType("INTEGER");
 
@@ -44,9 +50,6 @@ namespace DemoDMS.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset>("ModifiedDate")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -60,12 +63,6 @@ namespace DemoDMS.Migrations
                     b.Property<string>("SupervisorName")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("UploadDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Document");
@@ -76,6 +73,12 @@ namespace DemoDMS.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("DateModified")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");

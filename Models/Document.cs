@@ -8,22 +8,23 @@ namespace DemoDMS.Models
     {
         public int Id { get; set; }
 
+        public bool IsComposite() {
+            return false;
+        }
+
         [Required]
         public string? Name { get; set; }
 
+        [DataType(DataType.DateTime)]
+        public DateTimeOffset DateCreated { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTimeOffset DateModified { get; set; }
+
         public string? Extension { get; set;}
-
-        public string? UserName { get; set; } 
-
-        [DataType(DataType.DateTime)]
-        public DateTimeOffset UploadDate { get; set; }
-
-        [DataType(DataType.DateTime)]
-        public DateTimeOffset ModifiedDate { get; set; }
 
         public double? Size { get; set;}
         
-        [Display(Name="File")]
         public string? FilePath { get; set; }
 
         public string? FileType { get; set; }
@@ -48,5 +49,4 @@ namespace DemoDMS.Models
     public enum Department {فنی, ادبیات, علوم}
 
     public enum Faculty {برق, کامپیوتر}
-
 }

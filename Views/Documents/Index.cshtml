@@ -9,13 +9,18 @@
 
 <h1>@Localizer["Index"]</h1>
 
+<br>
+
 <p>
-    <a asp-action="Create">@Localizer["Create New"]</a>
+    <a asp-action="Create"><button type="button" class="btn btn-secondary">@Localizer["Create New"]</button></a>
 </p>
+
+<br>
+
 <form asp-controller="Documents" asp-action="Index" method="get">
     <p>
         <input type="text" name="SearchString" value="@ViewBag.searchString"/>
-        <input type="submit" value="@Localizer["Search"]"/>
+        <input type="submit" class="btn btn-secondary" value="@Localizer["Search"]"/>
     </p>
 </form>
 <table class="table sortable">
@@ -28,13 +33,10 @@
                 @Localizer[Html.DisplayNameFor(model => model.Extension)]
             </th>
             <th>
-                @Localizer[Html.DisplayNameFor(model => model.UserName)]
+                @Localizer[Html.DisplayNameFor(model => model.DateCreated)]
             </th>
             <th>
-                @Localizer[Html.DisplayNameFor(model => model.UploadDate)]
-            </th>
-            <th>
-                @Localizer[Html.DisplayNameFor(model => model.ModifiedDate)]
+                @Localizer[Html.DisplayNameFor(model => model.DateModified)]
             </th>
             <th>
                 @Localizer[Html.DisplayNameFor(model => model.Size)]
@@ -52,13 +54,10 @@
                 @Html.DisplayFor(modelItem => item.Extension)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                @Html.DisplayFor(modelItem => item.DateCreated)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UploadDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
+                @Html.DisplayFor(modelItem => item.DateModified)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Size)

@@ -91,17 +91,23 @@ msgstr "نام کاربر"
 msgid "Category"
 msgstr "دسته‌بندی"
 
-msgid "UploadDate"
-msgstr "زمان آپلود"
+msgid "DateUpload"
+msgstr "تاریخ آپلود"
 
-msgid "Upload Date"
-msgstr "زمان آپلود"
+msgid "Date Upload"
+msgstr "تاریخ آپلود"
 
-msgid "ModifiedDate"
-msgstr "زمان اصلاح"
+msgid "DateCreated"
+msgstr "تاریخ ایجاد"
 
-msgid "Modified Date"
-msgstr "زمان اصلاح"
+msgid "Date Created"
+msgstr "تاریخ ایجاد"
+
+msgid "DateModified"
+msgstr "تاریخ اصلاح"
+
+msgid "Date Modified"
+msgstr "تاریخ اصلاح"
 
 msgid "Size"
 msgstr "حجم"
