@@ -53,10 +53,10 @@
                 <i class="fas fa-folder fa-lg" style="color:Khaki"></i> <a asp-action="index" asp-route-id="@folder.Id" style="text-decoration: none;">@Html.DisplayFor(folderItem => folder.Name)</a>
             </td>
             <td>
-                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.DateCreated)</a>
+               @Html.DisplayFor(folderItem => folder.DateCreated)
             </td>
             <td>
-                <a asp-action="index" asp-route-id="@folder.Id">@Html.DisplayFor(folderItem => folder.DateModified)</a>
+                @Html.DisplayFor(folderItem => folder.DateModified)
             </td>
             <td>
             </td>
