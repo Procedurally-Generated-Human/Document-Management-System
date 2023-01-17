@@ -22,16 +22,27 @@ namespace DemoDMS.Controllers
         }
 
         // GET: Folders
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int id, string searchString)
         {
+
+
             ViewBag.currentID = id;
 
             var folders = from m in _context.Folder select m;
             var documents = from m in _context.Document select m;
 
             dynamic model = new ExpandoObject();
-            model.Folders = folders.Where(m => m.ParentId == id);
-            model.Documents = documents.Where(m => m.ParentId == id);
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                model.Folders = folders.Where(m => m.Name!.Contains(searchString));
+                model.Documents = documents.Where(m => m.Name!.Contains(searchString));
+            }
+
+            else{
+                model.Folders = folders.Where(m => m.ParentId == id);
+                model.Documents = documents.Where(m => m.ParentId == id);
+            }
 
             return View(model);
         }

@@ -11,6 +11,13 @@
 
 <br>
 
+<form asp-controller="Folders" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" value="@ViewBag.searchString"/>
+        <input type="submit" class="btn btn-secondary" value="@Localizer["Search"]"/>
+    </p>
+</form>
+
 <p>
     <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Folder"]</button></a>
     <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Document"]</button></a>
