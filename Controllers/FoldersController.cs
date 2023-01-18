@@ -42,11 +42,11 @@ namespace DemoDMS.Controllers
             }
 
             if(id==0){
-                ViewBag.ParentId = 0;
+                ViewBag.parentId = 0;
             }
             else{
                 var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
-                ViewBag.ParentId = folder.ParentId;
+                ViewBag.parentId = folder.ParentId;
             }
 
             return View(model);
