@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laptop\\Downloads\\Programming\\dotnet\\DMS-demo\\DemoDMS.csproj": {}
+    "/Users/parsa/Code/C#/DemoDMS/DemoDMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laptop\\Downloads\\Programming\\dotnet\\DMS-demo\\DemoDMS.csproj": {
+    "/Users/parsa/Code/C#/DemoDMS/DemoDMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laptop\\Downloads\\Programming\\dotnet\\DMS-demo\\DemoDMS.csproj",
+        "projectUniqueName": "/Users/parsa/Code/C#/DemoDMS/DemoDMS.csproj",
         "projectName": "DemoDMS",
-        "projectPath": "C:\\Users\\laptop\\Downloads\\Programming\\dotnet\\DMS-demo\\DemoDMS.csproj",
-        "packagesPath": "C:\\Users\\laptop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laptop\\Downloads\\Programming\\dotnet\\DMS-demo\\obj\\",
+        "projectPath": "/Users/parsa/Code/C#/DemoDMS/DemoDMS.csproj",
+        "packagesPath": "/Users/parsa/.nuget/packages/",
+        "outputPath": "/Users/parsa/Code/C#/DemoDMS/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/parsa/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -80,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -14,8 +14,8 @@
 <form asp-controller="Folders" asp-action="Index" method="get">
     <p>
         <a asp-action="Index" asp-route-id="@ViewBag.ParentId"><i class="fas fa-arrow-right fa-lg"></i></a>
-        <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Folder"]</button></a>
-        <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["New Document"]</button></a>
+        <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-success">@Localizer["New Folder"]</button></a>
+        <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-success">@Localizer["New Document"]</button></a>
         <input type="text" class="form-text" style="display:inline; white-space:nowrap;" name="SearchString" value="@ViewBag.searchString"/>
         <input type="submit" class="btn btn-secondary" value="@Localizer["Search"]"/>
     </p>
@@ -93,10 +93,12 @@
                     @Html.DisplayFor(documentItem => document.Extension)
                 </td>
                 <td> 
-                    <a asp-controller="Documents" asp-action="Details" asp-route-id="@document.Id"><i class="fas fa-info-circle fa-lg"></i></a> 
+                    
                     <a asp-controller="Documents" asp-action="Edit" asp-route-id="@document.Id"><i class="fas fa-edit fa-lg" style="color:orange"></i></a>
-                    <a asp-controller="Documents" asp-action="Download" asp-route-id="@document.Id"><i class="fas fa-download fa-lg" style="color:green"></i></a>
                     <a asp-controller="Documents" asp-action="Delete" asp-route-id="@document.Id"><i class="fas fa-trash fa-lg" style="color:red"></i></a>
+                    <a asp-controller="Documents" asp-action="Details" asp-route-id="@document.Id"><i class="fas fa-info-circle fa-lg"></i></a> 
+                    <a asp-controller="Documents" asp-action="Download" asp-route-id="@document.Id"><i class="fas fa-download fa-lg" style="color:green"></i></a>
+                    
                 </td>
             </tr>
         }
