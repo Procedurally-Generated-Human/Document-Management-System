@@ -42,8 +42,14 @@ namespace DemoDMS.Controllers
                 model.Documents = documents.Where(m => m.ParentId == id);
             }
 
-            var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
-            ViewBag.ParentId = folder.ParentId;
+            if(id==0){
+                ViewBag.ParentId = 0;
+            }
+            else{
+                var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
+                ViewBag.ParentId = folder.ParentId;
+            }
+            
 
             return View(model);
         }
