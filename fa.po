@@ -1,5 +1,5 @@
 msgid "DemoDMS"
-msgstr "سامانه پایان نامه"
+msgstr "سامانه‌ی آرشیو پایان‌نامه"
 
 msgid "Documents"
 msgstr "اسناد"
@@ -11,10 +11,10 @@ msgid "Home Page"
 msgstr "صفحه اصلی"
 
 msgid "Document Managment System"
-msgstr "سامانه‌ی مدیریت پایان نامه"
+msgstr "سامانه‌ی آرشیو پایان‌نامه"
 
 msgid "A system made for storing, editing, searching and downloading files"
-msgstr "سامانه‌ای برای ذخیره‌سازی، ویرایش، جستجو و دانلود پایان نامه"
+msgstr "سامانه‌ای برای ذخیره‌سازی، ویرایش، جستجو و دانلود پایان‌نامه"
 
 msgid "By: M.Ali.A and M.Parsa.T"
 msgstr "کاری از محمدپارسا توپچی‌نژاد و محمدعلی آقایانی"
@@ -165,6 +165,9 @@ msgstr "تاریخ انتشار"
 
 msgid "Publication Date"
 msgstr "تاریخ انتشار"
+
+msgid "Folder"
+msgstr "پوشه"
 
 msgid "Folders"
 msgstr "پوشه‌ها"

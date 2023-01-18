@@ -11,7 +11,8 @@
 
 <h4>@Localizer["Folder"]</h4>
 
-<hr />
+<br>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -22,16 +23,15 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <br>
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
