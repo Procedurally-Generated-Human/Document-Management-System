@@ -4,7 +4,7 @@
 @model dynamic
 
 @{
-    ViewBag.Title = Localizer["Index"];
+    ViewBag.title = Localizer["Index"];
 }
 
 <h1>@Localizer["Index"]</h1>
@@ -93,10 +93,10 @@
                     @Html.DisplayFor(documentItem => document.Extension)
                 </td>
                 <td> 
-                    <a asp-controller="Documents" asp-action="Details" asp-route-id="@document.Id"><i class="fas fa-info-circle fa-lg"></i></a> 
                     <a asp-controller="Documents" asp-action="Edit" asp-route-id="@document.Id"><i class="fas fa-edit fa-lg" style="color:orange"></i></a>
-                    <a asp-controller="Documents" asp-action="Download" asp-route-id="@document.Id"><i class="fas fa-download fa-lg" style="color:green"></i></a>
                     <a asp-controller="Documents" asp-action="Delete" asp-route-id="@document.Id"><i class="fas fa-trash fa-lg" style="color:red"></i></a>
+                    <a asp-controller="Documents" asp-action="Download" asp-route-id="@document.Id"><i class="fas fa-download fa-lg" style="color:green"></i></a>
+                    <a asp-controller="Documents" asp-action="Details" asp-route-id="@document.Id"><i class="fas fa-info-circle fa-lg"></i></a> 
                 </td>
             </tr>
         }

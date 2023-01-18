@@ -4,7 +4,7 @@
 @model DemoDMS.Models.Folder
 
 @{
-    ViewBag.Title = Localizer["Edit"];
+    ViewBag.title = Localizer["Edit"];
 }
 
 <h1>@Localizer["Edit"]</h1>
@@ -19,7 +19,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">@Localizer["Name"]</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
@@ -27,7 +27,7 @@
             <br>
 
             <div class="form-group">
-                <a asp-action="Index" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
+                <a asp-action="Index" asp-route-id="@ViewBag.parentId"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
                 <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
             </div>
         </form>
