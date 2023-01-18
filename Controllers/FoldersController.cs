@@ -48,10 +48,6 @@ namespace DemoDMS.Controllers
                 var folder = await _context.Folder.FirstOrDefaultAsync(m => m.Id == id);
                 ViewBag.ParentId = folder.ParentId;
             }
-<<<<<<< HEAD
-=======
-            
->>>>>>> 73081c65b899eb4e7c6b1331a359764dceefce09
 
             return View(model);
         }
