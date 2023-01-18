@@ -26,10 +26,10 @@ namespace DemoDMS.Migrations
                     b.Property<string>("AuthorName")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("DateCreated")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("DateModified")
+                    b.Property<DateTime>("DateModified")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Department")
@@ -77,10 +77,10 @@ namespace DemoDMS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset>("DateCreated")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("DateModified")
+                    b.Property<DateTime>("DateModified")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

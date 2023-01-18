@@ -118,8 +118,8 @@ namespace DemoDMS.Controllers
 
                 var document = new Document
                 { 
-                    DateCreated = DateTimeOffset.Now,
-                    DateModified = DateTimeOffset.Now,
+                    DateCreated = DateTime.Now,
+                    DateModified = DateTime.Now,
                     Name = name,
                     FilePath = filePath,
                     FileType = file.ContentType,
@@ -218,7 +218,7 @@ namespace DemoDMS.Controllers
                         }
                     }
 
-                    document.DateModified = DateTimeOffset.Now;
+                    document.DateModified = DateTime.Now;
                     document.Extension = Path.GetExtension(file.FileName);
                     document.Size = file.Length;
                     document.FileType = file.ContentType;

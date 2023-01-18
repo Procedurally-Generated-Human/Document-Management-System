@@ -69,8 +69,8 @@ namespace DemoDMS.Controllers
         {
             Folder folder = new Folder {
                 Name = name,
-                DateCreated = DateTimeOffset.Now,
-                DateModified = DateTimeOffset.Now,
+                DateCreated = DateTime.Now,
+                DateModified = DateTime.Now,
                 ParentId = parentId,
             };
 
@@ -95,6 +95,8 @@ namespace DemoDMS.Controllers
                 return NotFound();
             }
 
+            ViewBag.parentId = folder.ParentId;
+
             return View(folder);
         }
 
@@ -103,8 +105,20 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateCreated,DateModified,ParentId")] Folder folder)
+        public async Task<IActionResult> Edit(int id, string name, int parentId)
         {
+            if(id == null || _context.Folder == null)
+            {
+                return NotFound();
+            }
+            
+            var folder = await _context.Folder.FindAsync(id);
+
+            if(folder == null)
+            {
+                return NotFound();
+            }
+
             if(id != folder.Id)
             {
                 return NotFound();
@@ -114,7 +128,8 @@ namespace DemoDMS.Controllers
             {
                 try
                 {
-                    folder.DateModified = DateTimeOffset.Now;
+                    folder.Name = name;
+                    folder.DateModified = DateTime.Now;
                     _context.Update(folder);
                     await _context.SaveChangesAsync();
                 }
@@ -130,7 +145,7 @@ namespace DemoDMS.Controllers
                     }
                 }
 
-                return RedirectToAction("Index", new {id = folder.ParentId});
+                return RedirectToAction("Index", new {id = parentId});
             }
 
             return View(folder);
@@ -151,6 +166,8 @@ namespace DemoDMS.Controllers
                 return NotFound();
             }
 
+            ViewBag.parentId = folder.ParentId;
+
             return View(folder);
         }
 
@@ -165,6 +182,7 @@ namespace DemoDMS.Controllers
             }
 
             var folder = await _context.Folder.FindAsync(id);
+            var parentId = folder.ParentId;
 
             if(folder != null)
             {
@@ -173,7 +191,7 @@ namespace DemoDMS.Controllers
             
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new {id = parentId});
         }
 
         private bool FolderExists(int id)

@@ -14,10 +14,10 @@ namespace DemoDMS.Models
         public string? Name { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTimeOffset DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTimeOffset DateModified { get; set; }
+        public DateTime DateModified { get; set; }
 
         public List<Item> Contents = new List<Item>();
 

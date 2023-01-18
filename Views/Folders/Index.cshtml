@@ -13,7 +13,7 @@
 
 <form asp-controller="Folders" asp-action="Index" method="get">
     <p>
-        <a asp-action="Index" asp-route-id="@ViewBag.ParentId"><i class="fas fa-arrow-right fa-lg"></i></a>
+        <a asp-action="Index" asp-route-id="@ViewBag.parentId"><i class="fas fa-arrow-right fa-lg"></i></a>
         <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-success">@Localizer["New Folder"]</button></a>
         <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-success">@Localizer["New Document"]</button></a>
         <input type="text" class="form-text" style="display:inline; white-space:nowrap;" name="SearchString" value="@ViewBag.searchString"/>

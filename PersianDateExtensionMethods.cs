@@ -31,6 +31,11 @@ namespace System
                 formatInfo.ShortDatePattern = "yyyy/MM/dd";
                 formatInfo.LongDatePattern = "dddd, dd MMMM,yyyy";
 
+                formatInfo.ShortTimePattern = "yy/MM/dd HH:mm:ss";
+                formatInfo.LongTimePattern = "yy/MM/dd HH:mm:ss";
+
+                formatInfo.FullDateTimePattern = "yy/MM/dd HH:mm:ss";
+
                 formatInfo.FirstDayOfWeek = DayOfWeek.Saturday;
 
                 FieldInfo fieldInfo = _Culture.GetType().GetField("calendar", BindingFlags.NonPublic | BindingFlags.Instance);
