@@ -4,7 +4,7 @@
 @model DemoDMS.Models.Document
 
 @{
-    ViewData["Title"] = Localizer["Create"];
+    ViewBag.title = Localizer["Create"];
 }
 
 <h1>@Localizer["Create"]</h1>
@@ -57,8 +57,8 @@
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
                 <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
+                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
             </div>
         </form>
     </div>

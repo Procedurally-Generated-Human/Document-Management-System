@@ -57,7 +57,7 @@ namespace DemoDMS.Migrations
                     b.Property<int>("ParentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset>("PublicationDate")
+                    b.Property<DateTime>("PublicationDate")
                         .HasColumnType("TEXT");
 
                     b.Property<double?>("Size")

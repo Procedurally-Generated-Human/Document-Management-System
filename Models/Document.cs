@@ -39,7 +39,7 @@ namespace DemoDMS.Models
         public Faculty Faculty { get; set; }
         
         [DataType(DataType.DateTime)]
-        public DateTimeOffset PublicationDate { get; set; }
+        public DateTime PublicationDate { get; set; }
 
         public int ParentId {get; set;}
     }

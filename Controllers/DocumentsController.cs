@@ -90,7 +90,7 @@ namespace DemoDMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate, int parentId)
+        public async Task<IActionResult> Create(List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTime publicationDate, int parentId)
         {
             foreach(var file in files)
             {

@@ -16,8 +16,8 @@
         <a asp-action="Index" asp-route-id="@ViewBag.parentId"><i class="fas fa-arrow-right fa-lg"></i></a>
         <a asp-action="Create" asp-route-id="@ViewBag.currentID"><button type="button" class="btn btn-success">@Localizer["New Folder"]</button></a>
         <a asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.currentID"><button type="button" class="btn btn-success">@Localizer["New Document"]</button></a>
-        <input type="text" class="form-text" style="display:inline; white-space:nowrap;" name="SearchString" value="@ViewBag.searchString"/>
-        <input type="submit" class="btn btn-secondary" value="@Localizer["Search"]"/>
+        <input type="text" class="form-text" style="padding: 0.25rem; font-size: 1rem; font-weight: 400; line-height: 1.5; color: #212529; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: 0.25rem;" name="SearchString" value="@ViewBag.searchString"/>
+        <input type="submit" class="btn btn-primary" value="@Localizer["Search"]"/>
     </p>
 </form>
 
