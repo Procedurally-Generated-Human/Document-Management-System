@@ -32,7 +32,7 @@ namespace DemoDMS.Controllers
                 documents = documents.Where(s => s.Name!.Contains(searchString));
             }
 
-            ViewData["searchString"] = searchString;
+            ViewBag.searchString = searchString;
 
             return View(await documents.ToListAsync());
         }
@@ -51,6 +51,8 @@ namespace DemoDMS.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.parentId = document.ParentId;
 
             return View(document);
         }
@@ -157,6 +159,8 @@ namespace DemoDMS.Controllers
                 return NotFound();
             }
 
+            ViewBag.parentId = document.ParentId;
+
             return View(document);
         }
 
@@ -167,6 +171,7 @@ namespace DemoDMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, List<IFormFile> files, String name, String authorName, string supervisorName, Level level, Department department, Faculty faculty, DateTimeOffset publicationDate, int parentId)
         {
+        
             if(id == null || _context.Document == null)
             {
                 return NotFound();
@@ -183,9 +188,11 @@ namespace DemoDMS.Controllers
             {
                 return NotFound();
             }
+            
 
             if(ModelState.IsValid)
             {
+                ViewBag.parentId = parentId;
                 bool isEmpty = !files.Any();
                 IFormFile file = null;
 
@@ -264,6 +271,8 @@ namespace DemoDMS.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.parentId = document.ParentId;
 
             return View(document);
         }

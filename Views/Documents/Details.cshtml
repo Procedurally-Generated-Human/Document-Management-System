@@ -106,7 +106,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Download" asp-route-id="@Model?.Id"><button type="button" class="btn btn-success">@Localizer["Download"] <i class="fas fa-download"></i></button></a> 
-    <a asp-action="Edit" asp-route-id="@Model?.Id"><button type="button" class="btn btn-primary">@Localizer["Edit"] <i class="fas fa-edit"></i></button></a> 
-    <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"] <i class="fas fa-undo"></i></button></a>
+    <a asp-controller="Folders" asp-action="Index" asp-route-id="@ViewBag.parentId"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
+    <a asp-action="Download" asp-route-id="@Model?.Id"><button type="button" class="btn btn-success">@Localizer["Download"] <i class="fas fa-download"></i></button></a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id"><button type="button" class="btn btn-primary">@Localizer["Edit"] <i class="fas fa-edit"></i></button></a>
 </div>

@@ -1,0 +1,179 @@
+msgid "DemoDMS"
+msgstr "سامانه‌ی آرشیو پایان‌نامه"
+
+msgid "Documents"
+msgstr "اسناد"
+
+msgid "Document"
+msgstr "سند"
+
+msgid "Home Page"
+msgstr "صفحه اصلی"
+
+msgid "Document Managment System"
+msgstr "سامانه‌ی آرشیو پایان‌نامه"
+
+msgid "A system made for storing, editing, searching and downloading files"
+msgstr "سامانه‌ای برای ذخیره‌سازی، ویرایش، جستجو و دانلود پایان‌نامه"
+
+msgid "By: M.Ali.A and M.Parsa.T"
+msgstr "کاری از محمدپارسا توپچی‌نژاد و محمدعلی آقایانی"
+
+msgid "Edit and Download"
+msgstr "ویرایش و دانلود"
+
+msgid "Edit and view files and document data with just a few clicks. Using the action buttons you can easily delete or download any document."
+msgstr "فایل‌ها و مشخصات آن‌ها را تنها با چند کلیک مشاهده و ویرایش کنید. با استفاده از دکمه‌های روبه‌روی هر سند، می توان به راحتی عملیات‌های حذف کردن یا دانلود کردن را انجام داد."
+
+msgid "Keep Your Files Organized"
+msgstr "نظم‌دهی به فایل‌ها"
+
+msgid "Electronic document storage increases productivity and security, while reducing costs and human error. Using a DMS can improve file accessibility and keeps everything nice and tidy."
+msgstr "ذخیره سازی الکترونیکی اسناد، بهره وری و امنیت آن‌ها را افزایش و در عین حال هزینه ها و خطای انسانی را کاهش می‌دهد. استفاده از سامانه‌ی مدیریت اسناد می‌تواند دسترسی به فایل‌ها را بهبود بخشیده و همه چیز را زیبا و مرتب نگه دارد."
+
+msgid "Search and Sort"
+msgstr "جستجو و مرتب‌سازی"
+
+msgid "Search through files to increase accessibility. Click any column to sort all documents by that paramater. You can sort both in ascending and descending order."
+msgstr "امکان جستجو دسترسی به فایل‌ها را  افزایش می‌دهد. با کلیک روی عنوان هر ستون، همه‌ی اسناد بر اساس آن ویژگی مرتب می‌شوند. با استفاده از این قابلیت می‌توان اسناد را به هر دو حالت صعودی و نزولی مرتب کرد."
+
+msgid "View Documents"
+msgstr "ورود به سامانه"
+
+msgid "Index"
+msgstr "فهرست"
+
+msgid "Edit"
+msgstr "ویرایش"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Are you sure you want to delete this?"
+msgstr "آیا از حذف این مورد اطمینان دارید؟"
+
+msgid "Details"
+msgstr "جزییات"
+
+msgid "Create"
+msgstr "ایجاد"
+
+msgid "Download"
+msgstr "دانلود"
+
+msgid "Return"
+msgstr "بازگشت"
+
+msgid "Create New"
+msgstr "ایجاد سند جدید"
+
+msgid "Actions"
+msgstr "عملیات‌"
+
+msgid "Search"
+msgstr "جستجو"
+
+msgid "Name"
+msgstr "نام"
+
+msgid "Extension"
+msgstr "پسوند"
+
+msgid "UserName"
+msgstr "نام کاربر"
+
+msgid "User Name"
+msgstr "نام کاربر"
+
+msgid "Category"
+msgstr "دسته‌بندی"
+
+msgid "DateUpload"
+msgstr "تاریخ آپلود"
+
+msgid "Date Upload"
+msgstr "تاریخ آپلود"
+
+msgid "DateCreated"
+msgstr "تاریخ ایجاد"
+
+msgid "Date Created"
+msgstr "تاریخ ایجاد"
+
+msgid "DateModified"
+msgstr "تاریخ اصلاح"
+
+msgid "Date Modified"
+msgstr "تاریخ اصلاح"
+
+msgid "Size"
+msgstr "حجم"
+
+msgid "File"
+msgstr "فایل"
+
+msgid "FileType"
+msgstr "تیپ فایل"
+
+msgid "File Type"
+msgstr "تیپ فایل"
+
+msgid "FilePath"
+msgstr "آدرس فایل"
+
+msgid "File Path"
+msgstr "آدرس فایل"
+
+msgid "Management"
+msgstr "مدیریت"
+
+msgid "Financial"
+msgstr "مالی"
+
+msgid "General"
+msgstr "عمومی"
+
+msgid "Security"
+msgstr "حراست"
+
+msgid "AuthorName"
+msgstr "نام نویسنده"
+
+msgid "Author Name"
+msgstr "نام نویسنده"
+
+msgid "SupervisorName"
+msgstr "نام استاد راهنما"
+
+msgid "Supervisor Name"
+msgstr "نام استاد راهنما"
+
+msgid "Level"
+msgstr "مقطع"
+
+msgid "Department"
+msgstr "دانشکده"
+
+msgid "Faculty"
+msgstr "گروه"
+
+msgid "PublicationDate"
+msgstr "تاریخ انتشار"
+
+msgid "Publication Date"
+msgstr "تاریخ انتشار"
+
+msgid "Folder"
+msgstr "پوشه"
+
+msgid "Folders"
+msgstr "پوشه‌ها"
+
+msgid "New Folder"
+msgstr "پوشه‌ی جدید"
+
+msgid "New Document"
+msgstr "سند جدید"

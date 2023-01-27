@@ -73,6 +73,12 @@ namespace DemoDMS.Controllers
                 DateModified = DateTime.Now,
                 ParentId = parentId,
             };
+            
+            var parentFolder = await _context.Folder.FindAsync(parentId);
+
+            if(parentFolder != null) {
+                parentFolder.Contents.Add(folder);
+            }
 
             _context.Add(folder);
             await _context.SaveChangesAsync();

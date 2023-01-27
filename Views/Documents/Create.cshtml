@@ -10,7 +10,9 @@
 <h1>@Localizer["Create"]</h1>
 
 <h4>@Localizer["Document"]</h4>
-<hr />
+
+<br>
+
 <div class="row">
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data" asp-controller="Documents" asp-action="Create" asp-route-parentId="@ViewBag.parentId">
@@ -57,7 +59,7 @@
             </div>
             <br>
             <div class="form-group">
-                <a asp-action="Index"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
+                <a asp-controller="Folders" asp-action="Index" asp-route-id="@ViewBag.parentId"><button type="button" class="btn btn-secondary">@Localizer["Return"]</button></a>
                 <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
             </div>
         </form>
